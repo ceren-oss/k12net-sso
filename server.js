@@ -1,0 +1,48 @@
+const express = require("express");
+const axios = require("axios");
+
+const app = express();
+
+const CLIENT_ID = "BURAYA_CLIENT_ID";
+const CLIENT_SECRET = "BURAYA_CLIENT_SECRET";
+
+const REDIRECT_URI = "BURAYA_RAILWAY_URL/auth/k12net/callback";
+
+app.get("/auth/k12net/login", (req, res) => {
+  const url = `https://k12net.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  res.redirect(url);
+});
+
+app.get("/auth/k12net/callback", async (req, res) => {
+  const code = req.query.code;
+
+  try {
+    const tokenResponse = await axios.post("https://k12net.com/oauth/token", {
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      code: code,
+      grant_type: "authorization_code",
+      redirect_uri: REDIRECT_URI
+    });
+
+    const accessToken = tokenResponse.data.access_token;
+
+    const userResponse = await axios.get("https://k12net.com/api/user", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+
+    const user = userResponse.data;
+
+    res.redirect(`https://siteniz.com/login-success?name=${user.name}`);
+
+  } catch (err) {
+    console.log(err);
+    res.send("Login hata verdi");
+  }
+});
+
+app.listen(3000, () => {
+  console.log("Server çalışıyor");
+});
