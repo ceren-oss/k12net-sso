@@ -6,7 +6,7 @@ const app = express();
 const CLIENT_ID = "BURAYA_CLIENT_ID";
 const CLIENT_SECRET = "BURAYA_CLIENT_SECRET";
 
-const REDIRECT_URI = "BURAYA_RAILWAY_URL/auth/k12net/callback";
+const REDIRECT_URI = "https://k12net-sso-production.up.railway.app/auth/k12net/callback";
 
 app.get("/auth/k12net/login", (req, res) => {
   const url = `https://k12net.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
