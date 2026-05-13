@@ -6,7 +6,7 @@ const app = express();
 const CLIENT_ID = "47d21f52-0c07-495e-de49-5c4ae83af8ab";
 const CLIENT_SECRET = "0635f3f0-4f49-4e1c-c35b-84562b47d4b1";
 
-const REDIRECT_URI = "https://k12net-sso-production.up.railway.app/auth/k12net/callback";
+const REDIRECT_URI = "https://oauth.pstmn.io/v1/callback";
 
 app.get("/auth/k12net/login", (req, res) => {
   const url = `https://k12net.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
