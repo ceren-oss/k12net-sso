@@ -3,8 +3,8 @@ const axios = require("axios");
 
 const app = express();
 
-const CLIENT_ID = "BURAYA_CLIENT_ID";
-const CLIENT_SECRET = "BURAYA_CLIENT_SECRET";
+const CLIENT_ID = "47d21f52-0c07-495e-de49-5c4ae83af8ab";
+const CLIENT_SECRET = "0635f3f0-4f49-4e1c-c35b-84562b47d4b1";
 
 const REDIRECT_URI = "https://k12net-sso-production.up.railway.app/auth/k12net/callback";
 
