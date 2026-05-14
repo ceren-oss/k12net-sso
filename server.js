@@ -12,7 +12,9 @@ const BASE_URL = "https://api.k12net.com";
 const REDIRECT_URI =
   "https://k12net-sso-production.up.railway.app/auth/k12net/callback";
 
-
+app.get("/", (req, res) => {
+  res.send("Backend çalışıyor 🚀");
+});
 // LOGIN
 app.get("/auth/k12net/login", (req, res) => {
 
