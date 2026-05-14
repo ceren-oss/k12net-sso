@@ -20,7 +20,8 @@ app.get("/auth/k12net/login", (req, res) => {
     `${BASE_URL}/oauth/authorize` +
     `?client_id=${CLIENT_ID}` +
     `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
-    `&response_type=code`;
+    `&response_type=code` +
+    `&scope=openid profile email`;
 
   res.redirect(authUrl);
 });
@@ -78,7 +79,7 @@ app.get("/auth/k12net/callback", async (req, res) => {
 
   } catch (error) {
 
-    console.log(error.response?.data || error.message);
+    console.log("HATA:", error.response?.data || error.message);
 
     res.send(`
       <h1>Hata Oluştu ❌</h1>
@@ -88,6 +89,8 @@ app.get("/auth/k12net/callback", async (req, res) => {
 });
 
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   console.log("Server çalışıyor");
 });
