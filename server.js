@@ -21,7 +21,7 @@ app.get("/auth/k12net/login", (req, res) => {
     `?client_id=${CLIENT_ID}` +
     `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
     `&response_type=code` +
-    `&scope=openid profile email`;
+    `&scope=openid%20profile%20email`;
 
   res.redirect(authUrl);
 });
