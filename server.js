@@ -76,7 +76,9 @@ app.get("/auth/k12net/callback", async (req, res) => {
         }
       }
     );
-
+app.get("/", (req, res) => {
+  res.send("Backend çalışıyor 🚀");
+});
     const user = userResponse.data;
 
     console.log("USER:", user);
