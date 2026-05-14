@@ -17,11 +17,11 @@ const REDIRECT_URI =
 app.get("/auth/k12net/login", (req, res) => {
 
   const authUrl =
-    `${BASE_URL}/oauth/authorize` +
-    `?client_id=${CLIENT_ID}` +
-    `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
-    `&response_type=code` +
-    `&scope=openid%20profile%20email`;
+  `${BASE_URL}/oauth/authorize` +
+  `?client_id=${CLIENT_ID}` +
+  `&redirect_uri=${encodeURIComponent(REDIRECT_URI)}` +
+  `&response_type=code` +
+  `&scope=openid%20profile%20email`;
 
   res.redirect(authUrl);
 });
